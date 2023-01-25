@@ -10,12 +10,12 @@ For demonstration purpose, pretrained model of a minimal implementation of our _
 
 ## Software requirements
 Our code was tested on Windows and Linux operating systems with following software requirements:
-
-## Reference
-We acknowledge the original DETR codes and posts available from [link](https://github.com/facebookresearch/detr).
 - `python` = 3.9.15
 - `pytorch` = 1.10.1
 - `numpy` = 1.22.1
 - `pandas` = 1.4.0
 - `scikit-image` = 0.19.1
+
+## Reference
+We acknowledge the original DETR codes and posts available from [link](https://github.com/facebookresearch/detr).
 
