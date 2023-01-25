@@ -194,7 +194,7 @@ for i in range(num):
     ax.axis('off')
     
 fig.tight_layout()
-fig.savefig('./Results/decoder_weights_examples.png')
+fig.savefig(os.path.join(PATH,'decoder_weights_examples.png'))
 
 sattn = enc_attn_weights[0].reshape((h,w) + (h,w))
 fact = 32
@@ -252,4 +252,4 @@ time.sleep(0.1)
 fig.canvas.mpl_disconnect(cid)
    
 
-fig.savefig('./Results/encoder_weights_examples.png')
+fig.savefig(os.path.join(PATH,'encoder_weights_examples.png'))
