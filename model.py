@@ -1,6 +1,6 @@
 import torch
 import torch.nn as nn
-from torchvision.models import resnet50
+from torchvision.models import resnet50,resnet18
 
 class lDETR(nn.Module):
     """
@@ -12,11 +12,11 @@ class lDETR(nn.Module):
         super().__init__()
 
         # create ResNet-50 backbone
-        self.backbone = resnet50(pretrained=True)
+        self.backbone = resnet18(pretrained=True)
         del self.backbone.fc
 
         # create conversion layer
-        self.conv = nn.Conv2d(2048, hidden_dim, 1)
+        self.conv = nn.Conv2d(512, hidden_dim, 1)
 
         # create a default PyTorch transformer
         self.transformer = nn.Transformer(

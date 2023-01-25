@@ -18,7 +18,7 @@ label_path = "./"
 image_path = "../Top_tracheal_images" 
 test_image_path = "../Top_tracheal_healthy_images"
 
-pretrained_file = './pretrained_fold1.pth'
+pretrained_file = './pretrained_model.pth'
 nfold = 1
 new_size = 512
 device = 'cpu'
@@ -46,7 +46,7 @@ validset = topTrachealDataset(csv_file=os.path.join(label_path, 'train_labels_fo
                                     transform=valid_transform,
                                     root_dir=image_path)
 
-validloader = DataLoader(validset,batch_size=BATCH_SIZE,shuffle=False,num_workers=num_workers,prefetch_factor=prefetch_factor,)
+validloader = DataLoader(validset,batch_size=BATCH_SIZE,shuffle=True,num_workers=num_workers,prefetch_factor=prefetch_factor,)
 testset = topTrachealDataset(csv_file=os.path.join(label_path, 'healthy_labels.csv'),
                                     transform=test_transform,
                                     root_dir=test_image_path)
@@ -119,13 +119,13 @@ df_test = pd.DataFrame(df_test)
 df_test.to_csv(os.path.join(PATH,'Testing_results.csv'),index=False)
 
 # Get error distributions
-ep_valid_loss = ep_valid_loss.squeeze()
+ep_valid_loss = np.array(ep_valid_loss).squeeze()
 valid_mean = np.mean(ep_valid_loss)
 valid_std = np.std(ep_valid_loss)
 valid_median = np.median(ep_valid_loss)
 print("Valid on patient's data: Mean %.4f;Std %.4f; Median %.4f"%(valid_mean,valid_std,valid_median))
 
-ep_test_loss = ep_test_loss.squeeze()
+ep_test_loss = np.array(ep_test_loss).squeeze()
 test_mean = np.mean(ep_test_loss)
 test_std = np.std(ep_test_loss)
 test_median = np.median(ep_test_loss)
